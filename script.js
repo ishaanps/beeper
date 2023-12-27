@@ -1,21 +1,25 @@
 document.getElementById('startButton').addEventListener('click', function() {
-    let count = 0;
-    let reps = 0;
-    let timerDisplay = document.getElementById('timer');
-    let interval = setInterval(() => {
-        let timeInCycle = count % 8;
-        timerDisplay.textContent = timeInCycle < 6 ? timeInCycle + 1 : 0; // Update the timer display
+    setTimeout(function() {
+        beep(); // Initial beep to start
 
-        if (timeInCycle === 0) {
-            beep(); // Beep at the start of each cycle
-            reps++;
-            document.getElementById('reps').textContent = reps;
-        } else if (timeInCycle === 6) {
-            beep(); // Beep at the end of the 6-second rep
-        }
+        let count = 0;
+        let reps = 0;
+        let timerDisplay = document.getElementById('timer');
+        let interval = setInterval(() => {
+            let timeInCycle = count % 8;
+            timerDisplay.textContent = timeInCycle < 6 ? timeInCycle + 1 : 0; // Update the timer display
 
-        count++;
-    }, 1000);
+            if (timeInCycle === 0) {
+                beep(); // Beep at the start of each cycle
+                reps++;
+                document.getElementById('reps').textContent = reps;
+            } else if (timeInCycle === 6) {
+                beep(); // Beep at the end of the 6-second rep
+            }
+
+            count++;
+        }, 1000);
+    }, 1000); // Wait for 1 second before starting the timer
 });
 
 function beep() {
