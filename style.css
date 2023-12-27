@@ -8,12 +8,12 @@ body {
 }
 
 #timer {
-    font-size: 30px; /* Adjust the size as needed */
+    font-size: 80px; /* Adjust the size as needed */
     font-weight: bold;
 }
 
 #reps {
-    font-size: 40px; /* Adjust this value to make it bigger or smaller */
+    font-size: 80px; /* Adjust this value to make it bigger or smaller */
     font-weight: bold;
 }
 
