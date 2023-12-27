@@ -1,4 +1,32 @@
+// Create an AudioContext (compatibility with various browsers)
+var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+// Function to initialize the audio context
+function initAudioContext() {
+    // Create a buffer source node
+    var source = audioContext.createBufferSource();
+    source.buffer = audioContext.createBuffer(1, 1, 22050); // create an empty buffer
+    source.connect(audioContext.destination);
+    source.start(0);
+
+    // Play an inaudible sound to unlock the audio
+    if (audioContext.resume) {
+        audioContext.resume();
+    }
+}
+
+// Updated beep function to play within the AudioContext
+function beep() {
+    var snd = new Audio('beep.wav'); // Make sure the path to your audio file is correct
+    snd.play();
+    if (audioContext.state === 'suspended') {
+        audioContext.resume();
+    }
+}
+
+// Add event listener to your start button to initialize audio context
 document.getElementById('startButton').addEventListener('click', function() {
+    initAudioContext();
     setTimeout(function() {
         beep(); // Initial beep to start
 
@@ -21,8 +49,3 @@ document.getElementById('startButton').addEventListener('click', function() {
         }, 1000);
     }, 1000); // Wait for 1 second before starting the timer
 });
-
-function beep() {
-    var snd = new Audio('beep.wav'); // Make sure the path to your audio file is correct
-    snd.play();
-}
