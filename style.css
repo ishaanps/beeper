@@ -12,3 +12,8 @@ body {
     font-weight: bold;
 }
 
+#reps {
+    font-size: 40px; /* Adjust this value to make it bigger or smaller */
+    font-weight: bold;
+}
+
