@@ -3,15 +3,15 @@ document.getElementById('startButton').addEventListener('click', function() {
     let reps = 0;
     let timerDisplay = document.getElementById('timer');
     let interval = setInterval(() => {
-        let timeInRep = count % 6;
-        timerDisplay.textContent = timeInRep === 0 ? 5 : timeInRep - 1; // Update the timer display
+        let timeInCycle = count % 8;
+        timerDisplay.textContent = timeInCycle < 6 ? timeInCycle + 1 : 0; // Update the timer display
 
-        if (timeInRep === 0) {
-            beep();
+        if (timeInCycle === 0) {
+            beep(); // Beep at the start of each cycle
             reps++;
             document.getElementById('reps').textContent = reps;
-        } else if (timeInRep === 5) {
-            beep();
+        } else if (timeInCycle === 6) {
+            beep(); // Beep at the end of the 6-second rep
         }
 
         count++;
