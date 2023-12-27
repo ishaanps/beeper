@@ -6,3 +6,9 @@ body {
 #app {
     margin-top: 50px;
 }
+
+#timer {
+    font-size: 30px; /* Adjust the size as needed */
+    font-weight: bold;
+}
+
